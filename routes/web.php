@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\VisitorController;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Visitor;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/visitors', VisitorController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
