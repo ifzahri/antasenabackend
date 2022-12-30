@@ -4,6 +4,7 @@ use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Visitor;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,6 @@ Route::get('/', function () {
 });
 
 Route::resource('/visitors', VisitorController::class);
-
+Route::get('/create-pdf-file', [App\Http\Controllers\PDFController::class, 'generatePDF']);
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

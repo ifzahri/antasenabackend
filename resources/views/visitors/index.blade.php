@@ -17,36 +17,28 @@
 
                 <dt class="col-sm-3">Term</dt>
                 <dd class="col-sm-9">
-                    <p>Definition for the term.</p>
-                    <p>And some more placeholder definition text.</p>
-                </dd>
-
-                <dt class="col-sm-3">Another term</dt>
-                <dd class="col-sm-9">This definition is short, so no extra paragraphs or anything.</dd>
-
-                <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
-                <dd class="col-sm-9">This can be useful when space is tight. Adds an ellipsis at the end.</dd>
-
-                <dt class="col-sm-3">Nesting</dt>
-                <dd class="col-sm-9">
-                    <dl class="row">
-                        <dt class="col-sm-4">Nested definition list</dt>
-                        <dd class="col-sm-8">I heard you like definition lists. Let me put a definition list inside your
-                            definition
-                            list.</dd>
-                    </dl>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </dd>
             </dl>
         </div>
     </div>
+    @if ($message = Session::get('success'))
+      <div class="alert alert-success alert-block alert-dismissible fade show">
+        <strong>{{ $message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>	
+      </div>
+    @endif
+    <div class="pull-right mt-2 mb-2">
+        <a class="btn btn-primary" href="{{ route('visitors.create') }}">Tambah Data</a>
+    </div>
     <table class="table table-responsive table-hover table-striped caption-top">
-        <caption>Test tabel</caption>
+        <caption>Daftar Tamu</caption>
         <thead class="table-dark">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Tanggal</th>
-                <th scope="col">Waktu</th>
+                <th scope="col">Kunjungan</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -60,7 +52,9 @@
                     <td class="text-center">
                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                             action="{{ route('visitors.destroy', $visitor->id) }}" method="POST">
-                            <a class="btn btn-info" href="{{ route('visitors.show', $visitor->id) }}">Lihat</a>
+                            @guest
+                                <a class="btn btn-info" href="{{ route('visitors.show', $visitor->id) }}">Lihat</a>
+                            @endguest
                             <a href="{{ route('visitors.edit', $visitor->id) }}" class="btn btn-primary">Edit</a>
                             @csrf
                             @method('DELETE')
@@ -74,12 +68,12 @@
                 </div>
             @endforelse
         </tbody>
-        <tfoot>
+        <tfoot class="table-dark">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Tanggal</th>
-                <th scope="col">Waktu</th>
+                <th scope="col">Kunjungan</th>
                 <th scope="col">Action</th>
             </tr>
         </tfoot>

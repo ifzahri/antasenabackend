@@ -21,27 +21,28 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link @if(Request::segment(1) == 'home') @endif active" href="{{ route('visitors.index') }}">Home</a>
+                        <a class="nav-link {{ request()->routeIs('visitors.index') ? 'active':'' }}" aria-current="page" href="{{ route('visitors.index') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if(Request::segment(1) == 'daftar') @endif active" href="{{ route('visitors.create') }}">Daftar</a>
+                        <a class="nav-link {{ request()->routeIs('visitors.create') ? 'active':'' }}" href="{{ route('visitors.create') }}">Daftar</a>
                     </li>
-                    <!-- Authentication Links -->
-                    @guest
+                    <div class="d-flex">
+                        <!-- Authentication Links -->
+                        @guest
                         @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link " href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            @endif
+                            @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
+                                onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
@@ -50,7 +51,8 @@
                                 </form>
                             </div>
                         </li>
-                    @endguest
+                        @endguest
+                    </div>
                 </ul>
             </div>
         </div>

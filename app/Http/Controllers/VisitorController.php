@@ -10,7 +10,7 @@ class VisitorController extends Controller
 {
     public function index()
     {
-        $visitors = Visitor::latest()->paginate(0);
+        $visitors = Visitor::latest()->paginate(10)->onEachSide(1);
 
         return view('visitors.index', compact('visitors'))->with('i', (request()->input('page', 1) - 1) * 10);
     }

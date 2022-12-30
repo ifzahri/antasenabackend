@@ -77,7 +77,7 @@
                             </div>
                             <div class="col">
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="visits">Hal yang dikunjungi</label>
+                                    <label class="form-label" for="visits">Bagian yang ingin dikunjungi</label>
                                     <select class="form-select" aria-label="Default select example" id="visits"
                                         name="visits">
                                         <option selected>Pilih salah satu</option>
@@ -97,7 +97,9 @@
                                 </label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Kunjungi</button>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">Kunjungi</button>
+                        </div>
                 </form>
             </div>
         </div>
